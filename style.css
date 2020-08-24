@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+.calendar-head {
+  display: flex;
+}
+
+.calendar-head-day {
+  width: 104px;
+  height: 25px;
+  padding-top: 5px;
+  margin-right: 16px;
+  margin-bottom: 5px;
+  background: #868686;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.calendar-day {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 75px;
+  background: #ffffff;
+  margin-right: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #878686;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+}
+
+.calendar-day:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.calendar-day-lesson {
+  background: #c6e0e1;
+}
+
+.calendar-day-dayoff {
+  background: #4c9ece;
+}
+
+.calendar-day-number {
+  text-align: right;
+  margin: 8px 8px 0px 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+.calendar-day-name-block {
+  display: flex;
+  flex-grow: 1;
+}
+
+.calendar-day-name-block2 {
+  display: flex;
+  align-items: flex-end;
+}
+
+.calendar-day-name {
+  text-align: left;
+  margin: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.calendar-week {
+  display: flex;
+}
+
+.container-calendar {
+  padding: 120px 100px 50px 80px;
+  background: url('./public/Montazhnaya_oblast_32_FON.png') no-repeat;
+  background-size: contain;
+  min-width: 1200px;
+}
