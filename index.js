@@ -178,13 +178,18 @@ const getCalendarMonth = (year, month) => {
 // onClick="window.location.href='http://ya.ru'"
 
 $(() => {
-  drawCalendar()
+  // drawCalendar()
 
-  let dataMonth = []
-  const month = 10
-  const year = 2020
+  // let dataMonth = []
+  // const month = 10
+  // const year = 2020
 
-  dataMonth = getCalendarMonth(year, month)
-  dataMonth = getCalendarMonth(year, 2)
-  console.log(dataMonth)
+  // dataMonth = getCalendarMonth(year, month)
+  // dataMonth = getCalendarMonth(year, 2)
+  // console.log(dataMonth)
+
+  const regex = /(Пн|Вт|Ср|Чт|Пт|Сб|Вс)\s([0-3][0-9])\s([А-Я][а-я][а-я])\s(([0-2][0-9]:[0-5][0-9])|(20[2-4][0-9]))/gm
+  const str = `Дата и время начала Вт 22 Сен 18:00`
+  const m = regex.exec(str)
+  console.log(m)
 })
