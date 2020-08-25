@@ -1,139 +1,104 @@
 const FISRT_DAY_OF_MOUNT = 1
 const COUNT_DAYS_OF_WEEK = 7
 
-const calendar = {
-  month: 9,
-  dates: [
-    [
-      { day: 31, name: '', href: '' },
-      { day: 1, name: '', href: '' },
-      { day: 2, name: '', href: '' },
-      { day: 3, name: '', href: '' },
-      { day: 4, name: '', href: '' },
-      { day: 5, name: '', href: '' },
-      { day: 6, name: 'Бесплатный вебинар', href: '' },
-    ],
-    [
-      { day: 7, name: '', href: '' },
-      {
-        day: 8,
-        name: 'Атомы и молекулы',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114544',
-      },
-      { day: 9, name: '', href: '' },
-      {
-        day: 10,
-        name: 'Разбор варианта',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114684',
-      },
-      { day: 11, name: '', href: '' },
-      {
-        day: 12,
-        name: 'Строение атома',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114613',
-      },
-      { day: 13, name: 'Бесплатный вебинар', href: '' },
-    ],
-    [
-      { day: 14, name: '', href: '' },
-      {
-        day: 15,
-        name: 'Практика по 1 и 2 уроку',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114619',
-      },
-      { day: 16, name: '', href: '' },
-      { day: 17, name: '', href: '' },
-      { day: 18, name: '', href: '' },
-      {
-        day: 19,
-        name: 'Периоди- ческий закон',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114626',
-      },
-      { day: 20, name: 'Бесплатный вебинар', href: '' },
-    ],
-    [
-      { day: 21, name: '', href: '' },
-      {
-        day: 22,
-        name: 'Валентность и степень окисления',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114641',
-      },
-      { day: 23, name: '', href: '' },
-      {
-        day: 24,
-        name: 'Разбор варианта',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114687',
-      },
-      {
-        day: 25,
-        name: 'Посиделки',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114647',
-      },
-      {
-        day: 26,
-        name: 'Практика по 3 и 4 уроку',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114656',
-      },
-      { day: 27, name: 'Бесплатный вебинар', href: '' },
-    ],
-    [
-      { day: 28, name: '', href: '' },
-      {
-        day: 29,
-        name: 'Строение молекул',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114663',
-      },
-      { day: 30, name: '', href: '' },
-      { day: 1, name: '', href: '' },
-      { day: 2, name: '', href: '' },
-      {
-        day: 3,
-        name: 'Основ. классы неорганических веществ',
-        href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114674',
-      },
-      { day: 4, name: 'Бесплатный вебинар', href: '' },
-    ],
-  ],
-}
+// const calendarTemp = {
+//   month: 9,
+//   dates: [
+//     [
+//       { day: 31, name: '', href: '' },
+//       { day: 1, name: '', href: '' },
+//       { day: 2, name: '', href: '' },
+//       { day: 3, name: '', href: '' },
+//       { day: 4, name: '', href: '' },
+//       { day: 5, name: '', href: '' },
+//       { day: 6, name: 'Бесплатный вебинар', href: '' },
+//     ],
+//     [
+//       { day: 7, name: '', href: '' },
+//       {
+//         day: 8,
+//         name: 'Атомы и молекулы',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114544',
+//       },
+//       { day: 9, name: '', href: '' },
+//       {
+//         day: 10,
+//         name: 'Разбор варианта',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114684',
+//       },
+//       { day: 11, name: '', href: '' },
+//       {
+//         day: 12,
+//         name: 'Строение атома',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114613',
+//       },
+//       { day: 13, name: 'Бесплатный вебинар', href: '' },
+//     ],
+//     [
+//       { day: 14, name: '', href: '' },
+//       {
+//         day: 15,
+//         name: 'Практика по 1 и 2 уроку',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114619',
+//       },
+//       { day: 16, name: '', href: '' },
+//       { day: 17, name: '', href: '' },
+//       { day: 18, name: '', href: '' },
+//       {
+//         day: 19,
+//         name: 'Периоди- ческий закон',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114626',
+//       },
+//       { day: 20, name: 'Бесплатный вебинар', href: '' },
+//     ],
+//     [
+//       { day: 21, name: '', href: '' },
+//       {
+//         day: 22,
+//         name: 'Валентность и степень окисления',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114641',
+//       },
+//       { day: 23, name: '', href: '' },
+//       {
+//         day: 24,
+//         name: 'Разбор варианта',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114687',
+//       },
+//       {
+//         day: 25,
+//         name: 'Посиделки',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114647',
+//       },
+//       {
+//         day: 26,
+//         name: 'Практика по 3 и 4 уроку',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114656',
+//       },
+//       { day: 27, name: 'Бесплатный вебинар', href: '' },
+//     ],
+//     [
+//       { day: 28, name: '', href: '' },
+//       {
+//         day: 29,
+//         name: 'Строение молекул',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114663',
+//       },
+//       { day: 30, name: '', href: '' },
+//       { day: 1, name: '', href: '' },
+//       { day: 2, name: '', href: '' },
+//       {
+//         day: 3,
+//         name: 'Основ. классы неорганических веществ',
+//         href: 'https://easypeasyschool.getcourse.ru/teach/control/lesson/view/id/168114674',
+//       },
+//       { day: 4, name: 'Бесплатный вебинар', href: '' },
+//     ],
+//   ],
+// }
+
+const calendar = { month: 9, dates: [] }
 
 const nameDay = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
-
-const drawCalendar = () => {
-  const { month, dates } = calendar
-
-  $('.container-calendar').append(`<div class="calendar-head"></div>`)
-  nameDay.forEach((name) => {
-    $('.calendar-head').append(`<div class="calendar-head-day">${name}</div>`)
-  })
-
-  dates.forEach((week, index) => {
-    $('.container-calendar').append(`<div class="calendar-week" data-number-week="${index}"></div>`)
-    const currWeek = $(`div[data-number-week="${index}"]`)
-
-    week.forEach((day, dayindex) => {
-      console.log(day.day)
-      currWeek.append(`<div class="calendar-day" data-number-day="${day.day}"></div>`)
-      const currDay = $(`div[data-number-week="${index}"] div[data-number-day="${day.day}"]`)
-      currDay.append(`<p class="calendar-day-number">${day.day}</p>`)
-      currDay.append(
-        `<div class="calendar-day-name-block">
-          <div class="calendar-day-name-block2" >
-            <p class="calendar-day-name">${day.name}</p>
-          </div>
-        </div>`,
-      )
-
-      if (day.name !== '') {
-        currDay.attr('onClick', `window.location.href='${day.href}'`)
-        if (dayindex !== 6) {
-          currDay.addClass('calendar-day-lesson')
-        } else {
-          currDay.addClass('calendar-day-dayoff')
-        }
-      }
-    })
-  })
-}
 
 const getCountWeeks = (year, month) => {
   const beginDate = moment(new Date(year, month - 1, FISRT_DAY_OF_MOUNT))
@@ -224,82 +189,7 @@ const parseGetCourseDate = (stringData) => {
   return undefined
 }
 
-$(() => {
-  // drawCalendar()
-
-  let dataMonth = []
-  const month = 9
-  const year = 2020
-
-  const dataLessons = [
-    {
-      date: 'Дата и время начала Вт 08 Сен 17:00',
-      link: '/teach/control/lesson/view/id/168115801',
-      title: 'Атомы и молекулы',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Чт 10 Сен 17:00',
-      link: '/teach/control/lesson/view/id/169891482',
-      title: 'Разбор варианта',
-      description: 'Описание урока',
-    },
-    {
-      date: 'Дата и время начала Сб 12 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114613',
-      title: 'Строение атома',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Вт 15 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114619',
-      title: 'Практика по 1 и 2 уроку',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Сб 19 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114626',
-      title: 'Периодический закон',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Вт 22 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114641',
-      title: 'Валентность и степень окисления',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Чт 24 Сен 17:00',
-      link: '/teach/control/lesson/view/id/169891483',
-      title: 'Разбор варианта',
-      description: 'Введите сюда описание урока',
-    },
-    {
-      date: 'Дата и время начала Пт 25 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114647',
-      title: 'Посиделки',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Сб 26 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114656',
-      title: 'Практика по 3 и 4 уроку',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Вт 29 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114663',
-      title: 'Строение молекул',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Сб 03 Окт 18:00',
-      link: '/teach/control/lesson/view/id/168114674',
-      title: 'Основные классы неорганических веществ',
-      description: '',
-    },
-  ]
-
+const drawCalendar = (month, year, dataLessons) => {
   const dl = dataLessons.map((value) => {
     const newDate = parseGetCourseDate(value.date)
     const time = moment(newDate).format('HH:mm')
@@ -308,6 +198,154 @@ $(() => {
 
   console.log(dl)
 
-  dataMonth = getCalendarMonth(year, month, dl)
+  const dataMonth = getCalendarMonth(year, month, dl)
+  calendar.month = month
+  calendar.dates = [...dataMonth]
   console.log(dataMonth)
+  console.log(calendar)
+
+  const { dates } = calendar
+
+  $('.apm-calendar').empty().append(`<div class="calendar-head"></div>`)
+  nameDay.forEach((name) => {
+    $('.calendar-head').append(`<div class="calendar-head-day">${name}</div>`)
+  })
+
+  dates.forEach((week, index) => {
+    $('.apm-calendar').append(`<div class="calendar-week" data-number-week="${index}"></div>`)
+    const currWeek = $(`div[data-number-week="${index}"]`)
+
+    week.forEach((day, dayindex) => {
+      console.log(day.day)
+      currWeek.append(`<div class="calendar-day" data-number-day="${day.day}"></div>`)
+      const currDay = $(`div[data-number-week="${index}"] div[data-number-day="${day.day}"]`)
+      currDay.append(
+        `<div class="calendar-day-title">
+          <div class="calendar-day-time">${day.time}</div>
+          <div class="calendar-day-number">${day.day}</div>
+        </div>`,
+      )
+      currDay.append(
+        `<div class="calendar-day-name-block">
+          <div class="calendar-day-name-block2" >
+            <p class="calendar-day-name">${day.name}</p>
+          </div>
+        </div>`,
+      )
+
+      if (day.name !== '') {
+        currDay.attr('onClick', `window.location.href='https://easypeasyschool.getcourse.ru${day.href}'`)
+        if (dayindex !== 6) {
+          currDay.addClass('calendar-day-lesson')
+        } else {
+          currDay.addClass('calendar-day-dayoff')
+        }
+      }
+
+      if (moment(day.date).isSame(new Date(), 'day')) {
+        currDay.addClass('calendar-day-current')
+      }
+    })
+  })
+}
+
+$(() => {
+  const month = 9
+  const year = 2020
+
+  $('#select-month').val(month)
+  $('#select-year').val(year)
+
+  const dataLessons = []
+  // const lessonNodes=$('.lesson-list .vmiddle')
+  // console.log(lessonNodes)
+
+  $('.lesson-list .vmiddle').each(function () {
+    const date = $(this).find('.user-state-label').text().trim()
+    const link = $(this).find('.link').attr('href')
+    const title = $(this).find('.title').text().trim()
+    const description = $(this).find('.description').text().trim()
+
+    dataLessons.push({ date, link, title, description })
+  })
+
+  console.log(JSON.stringify(dataLessons))
+
+  // const dataLessons = [
+  //   {
+  //     date: 'Дата и время начала Вт 08 Сен 17:00',
+  //     link: '/teach/control/lesson/view/id/168115801',
+  //     title: 'Атомы и молекулы',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Чт 10 Сен 17:00',
+  //     link: '/teach/control/lesson/view/id/169891482',
+  //     title: 'Разбор варианта',
+  //     description: 'Описание урока',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Сб 12 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114613',
+  //     title: 'Строение атома',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Вт 15 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114619',
+  //     title: 'Практика по 1 и 2 уроку',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Сб 19 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114626',
+  //     title: 'Периодический закон',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Вт 22 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114641',
+  //     title: 'Валентность и степень окисления',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Чт 24 Сен 17:00',
+  //     link: '/teach/control/lesson/view/id/169891483',
+  //     title: 'Разбор варианта',
+  //     description: 'Введите сюда описание урока',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Пт 25 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114647',
+  //     title: 'Посиделки',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Сб 26 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114656',
+  //     title: 'Практика по 3 и 4 уроку',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Вт 29 Сен 18:00',
+  //     link: '/teach/control/lesson/view/id/168114663',
+  //     title: 'Строение молекул',
+  //     description: '',
+  //   },
+  //   {
+  //     date: 'Дата и время начала Сб 03 Окт 18:00',
+  //     link: '/teach/control/lesson/view/id/168114674',
+  //     title: 'Основные классы неорганических веществ',
+  //     description: '',
+  //   },
+  // ]
+
+  $('#select-month').change(() => {
+    drawCalendar($('#select-month').val(), $('#select-year').val(), dataLessons)
+  })
+  $('#select-year').change(() => {
+    drawCalendar($('#select-month').val(), $('#select-year').val(), dataLessons)
+  })
+
+  drawCalendar(month, year, dataLessons)
 })
