@@ -185,11 +185,16 @@ const drawCalendar = (month, year) => {
 
       if (day.name !== '') {
         currDay.attr('onClick', `window.location.href='https://easypeasyschool.getcourse.ru${day.href}'`)
+
         if (dayindex !== 6) {
           currDay.addClass('calendar-day-lesson')
         } else {
           currDay.addClass('calendar-day-dayoff')
         }
+
+        // if (day.date.indexOf('Недоступен')) {
+        //   currDay.addClass('calendar-day-name-notavailable')
+        // }
       }
 
       if (moment(day.date).isSame(new Date(), 'day')) {

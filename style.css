@@ -87,6 +87,10 @@
   line-height: 95%;
 }
 
+.calendar-day-name-notavailable {
+  color: #ccc
+}
+
 .calendar-week {
   display: flex;
 }
