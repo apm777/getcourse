@@ -25,7 +25,9 @@ const getDataLesson = (date, dataLessons) => {
     name = dataLessons[ind].title
     href = dataLessons[ind].link
     description = dataLessons[ind].description
-    time = dataLessons[ind].time
+    if (dataLessons[ind].time !== '00:00') {
+      time = dataLessons[ind].time
+    }
   }
 
   return { name, href, description, time }
@@ -108,7 +110,76 @@ const getDataLessons = () => {
 }
 
 const drawCalendar = (month, year) => {
-  const dataLessons = getDataLessons()
+  //const dataLessons = getDataLessons()
+
+  const dataLessons = [
+    {
+      date: 'Дата и время начала Вт 01 Сен 17:00',
+      link: '/teach/control/lesson/view/id/168115801',
+      title: 'Атомы и молекулы',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала сегодня 17:00',
+      link: '/teach/control/lesson/view/id/169891482',
+      title: 'Разбор варианта',
+      description: 'Описание урока',
+    },
+    {
+      date: 'Дата и время начала завтра',
+      link: '/teach/control/lesson/view/id/168114613',
+      title: 'Строение атома',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Вт 15 Сен 18:00',
+      link: '/teach/control/lesson/view/id/168114619',
+      title: 'Практика по 1 и 2 уроку',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Сб 19 Сен 18:00',
+      link: '/teach/control/lesson/view/id/168114626',
+      title: 'Периодический закон',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Вт 22 Сен 18:00',
+      link: '/teach/control/lesson/view/id/168114641',
+      title: 'Валентность и степень окисления',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Чт 24 Сен 17:00',
+      link: '/teach/control/lesson/view/id/169891483',
+      title: 'Разбор варианта',
+      description: 'Введите сюда описание урока',
+    },
+    {
+      date: 'Дата и время начала Пт 25 Сен 18:00',
+      link: '/teach/control/lesson/view/id/168114647',
+      title: 'Посиделки',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Сб 26 Сен 18:00',
+      link: '/teach/control/lesson/view/id/168114656',
+      title: 'Практика по 3 и 4 уроку',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Вт 29 Сен 18:00',
+      link: '/teach/control/lesson/view/id/168114663',
+      title: 'Строение молекул',
+      description: '',
+    },
+    {
+      date: 'Дата и время начала Сб 03 Окт 18:00',
+      link: '/teach/control/lesson/view/id/168114674',
+      title: 'Основные классы неорганических веществ',
+      description: '',
+    },
+  ]
 
   const dl = dataLessons.map((value) => {
     const newDate = parseGetCourseDate(value.date)

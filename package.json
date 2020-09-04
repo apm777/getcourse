@@ -33,14 +33,11 @@
   },
   "keywords": [],
   "description": "",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "useBuiltIns": "usage"
-        }
-      ]
-    ]
+    "presets": ["@babel/preset-env"]
   }
 }
