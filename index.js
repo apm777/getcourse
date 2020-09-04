@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const FISRT_DAY_OF_MOUNT = 1
 const COUNT_DAYS_OF_WEEK = 7
 
