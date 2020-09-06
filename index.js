@@ -1,3 +1,72 @@
+// const dataLessons = [
+//   {
+//     date: 'Дата и время начала Вт 01 Сен 17:00',
+//     link: '/teach/control/lesson/view/id/168115801',
+//     title: 'Атомы и молекулы',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала сегодня',
+//     link: '/teach/control/lesson/view/id/169891482',
+//     title: 'Разбор варианта',
+//     description: 'Описание урока',
+//   },
+//   {
+//     date: 'Дата и время начала завтра',
+//     link: '/teach/control/lesson/view/id/168114613',
+//     title: 'Строение атома',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Вт 15 Сен 18:00',
+//     link: '/teach/control/lesson/view/id/168114619',
+//     title: 'Практика по 1 и 2 уроку',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Сб 19 Сен 18:00',
+//     link: '/teach/control/lesson/view/id/168114626',
+//     title: 'Периодический закон',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Вт 22 Сен',
+//     link: '/teach/control/lesson/view/id/168114641',
+//     title: 'Валентность и степень окисления',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Чт 24 Сен 17:00',
+//     link: '/teach/control/lesson/view/id/169891483',
+//     title: 'Разбор варианта',
+//     description: 'Введите сюда описание урока',
+//   },
+//   {
+//     date: 'Дата и время начала Пт 25 Сен 18:00',
+//     link: '/teach/control/lesson/view/id/168114647',
+//     title: 'Посиделки',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Сб 26 Сен 18:00',
+//     link: '/teach/control/lesson/view/id/168114656',
+//     title: 'Практика по 3 и 4 уроку',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Вт 29 Сен 18:00',
+//     link: '/teach/control/lesson/view/id/168114663',
+//     title: 'Строение молекул',
+//     description: '',
+//   },
+//   {
+//     date: 'Дата и время начала Сб 03 Окт 18:00',
+//     link: '/teach/control/lesson/view/id/168114674',
+//     title: 'Основные классы неорганических веществ',
+//     description: '',
+//   },
+// ]
+
 const FISRT_DAY_OF_MOUNT = 1
 const COUNT_DAYS_OF_WEEK = 7
 
@@ -72,9 +141,9 @@ const parseGetCourseDate = (stringData) => {
   const LENGTH_STRING_YEAR = 4
 
   const nameMonths = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
-  const regex = /(Пн|Вт|Ср|Чт|Пт|Сб|Вс)\s([0-3][0-9])\s([А-Я][а-я][а-я])\s(([0-2][0-9]:[0-5][0-9])|(20[2-4][0-9]))/gm
+  let regex = /(Пн|Вт|Ср|Чт|Пт|Сб|Вс)\s([0-3][0-9])\s([А-Я][а-я][а-я])\s?(([0-2][0-9]:[0-5][0-9])|(20[2-4][0-9])|())/gm
 
-  const match = regex.exec(stringData)
+  let match = regex.exec(stringData)
 
   let year = new Date().getFullYear()
   let hourAndMinute = ['00', '00']
@@ -84,11 +153,38 @@ const parseGetCourseDate = (stringData) => {
 
     if (match[ID_YEAR_OR_TIME].length === LENGTH_STRING_YEAR) {
       year = match[ID_YEAR_OR_TIME]
-    } else {
+    } else if (match[ID_YEAR_OR_TIME] !== '') {
       hourAndMinute = match[ID_YEAR_OR_TIME].split(':')
     }
 
     return new Date(year, indexMonth, match[ID_DATE], hourAndMinute[0], hourAndMinute[1])
+  }
+
+  regex = /((завтра)|(сегодня)|(вчера))/gm
+  match = regex.exec(stringData)
+  if (match !== null) {
+    const regexTime = /(([0-2][0-9]):([0-5][0-9]))/gm
+    const matchTime = regexTime.exec(stringData)
+    let addDay = 0
+
+    if (match[0] === 'завтра') {
+      addDay = 1
+    } else if (match[0] === 'вчера') {
+      addDay = -1
+    }
+
+    const currDate = new Date()
+
+    if (matchTime !== null) {
+      ;[, , hourAndMinute[0], hourAndMinute[1]] = matchTime
+    }
+    return new Date(
+      currDate.getFullYear(),
+      currDate.getMonth(),
+      currDate.getDate() + addDay,
+      hourAndMinute[0],
+      hourAndMinute[1],
+    )
   }
 
   return undefined
@@ -110,76 +206,7 @@ const getDataLessons = () => {
 }
 
 const drawCalendar = (month, year) => {
-  //const dataLessons = getDataLessons()
-
-  const dataLessons = [
-    {
-      date: 'Дата и время начала Вт 01 Сен 17:00',
-      link: '/teach/control/lesson/view/id/168115801',
-      title: 'Атомы и молекулы',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала сегодня 17:00',
-      link: '/teach/control/lesson/view/id/169891482',
-      title: 'Разбор варианта',
-      description: 'Описание урока',
-    },
-    {
-      date: 'Дата и время начала завтра',
-      link: '/teach/control/lesson/view/id/168114613',
-      title: 'Строение атома',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Вт 15 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114619',
-      title: 'Практика по 1 и 2 уроку',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Сб 19 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114626',
-      title: 'Периодический закон',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Вт 22 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114641',
-      title: 'Валентность и степень окисления',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Чт 24 Сен 17:00',
-      link: '/teach/control/lesson/view/id/169891483',
-      title: 'Разбор варианта',
-      description: 'Введите сюда описание урока',
-    },
-    {
-      date: 'Дата и время начала Пт 25 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114647',
-      title: 'Посиделки',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Сб 26 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114656',
-      title: 'Практика по 3 и 4 уроку',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Вт 29 Сен 18:00',
-      link: '/teach/control/lesson/view/id/168114663',
-      title: 'Строение молекул',
-      description: '',
-    },
-    {
-      date: 'Дата и время начала Сб 03 Окт 18:00',
-      link: '/teach/control/lesson/view/id/168114674',
-      title: 'Основные классы неорганических веществ',
-      description: '',
-    },
-  ]
+  const dataLessons = getDataLessons()
 
   const dl = dataLessons.map((value) => {
     const newDate = parseGetCourseDate(value.date)
@@ -272,96 +299,5 @@ const drawCalendar = (month, year) => {
 }
 
 $(() => {
-  // const dataLessons = []
-  // const lessonNodes=$('.lesson-list .vmiddle')
-  // console.log(lessonNodes)
-
-  // $('.lesson-list .vmiddle').each(() => {
-  //   const date = $(this).find('.user-state-label').text().trim()
-  //   const link = $(this).find('.link').attr('href')
-  //   const title = $(this).find('.title').text().trim()
-  //   const description = $(this).find('.description').text().trim()
-
-  //   dataLessons.push({ date, link, title, description })
-  // })
-
-  // console.log(JSON.stringify(dataLessons))
-
-  // const dataLessons = [
-  //   {
-  //     date: 'Дата и время начала Вт 08 Сен 17:00',
-  //     link: '/teach/control/lesson/view/id/168115801',
-  //     title: 'Атомы и молекулы',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Чт 10 Сен 17:00',
-  //     link: '/teach/control/lesson/view/id/169891482',
-  //     title: 'Разбор варианта',
-  //     description: 'Описание урока',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Сб 12 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114613',
-  //     title: 'Строение атома',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Вт 15 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114619',
-  //     title: 'Практика по 1 и 2 уроку',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Сб 19 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114626',
-  //     title: 'Периодический закон',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Вт 22 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114641',
-  //     title: 'Валентность и степень окисления',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Чт 24 Сен 17:00',
-  //     link: '/teach/control/lesson/view/id/169891483',
-  //     title: 'Разбор варианта',
-  //     description: 'Введите сюда описание урока',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Пт 25 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114647',
-  //     title: 'Посиделки',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Сб 26 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114656',
-  //     title: 'Практика по 3 и 4 уроку',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Вт 29 Сен 18:00',
-  //     link: '/teach/control/lesson/view/id/168114663',
-  //     title: 'Строение молекул',
-  //     description: '',
-  //   },
-  //   {
-  //     date: 'Дата и время начала Сб 03 Окт 18:00',
-  //     link: '/teach/control/lesson/view/id/168114674',
-  //     title: 'Основные классы неорганических веществ',
-  //     description: '',
-  //   },
-  // ]
-
-  // $('#select-month').change(() => {
-  //   drawCalendar($('#select-month').val(), $('#select-year').val(), dataLessons)
-  // })
-  // $('#select-year').change(() => {
-  //   drawCalendar($('#select-month').val(), $('#select-year').val(), dataLessons)
-  // })
-
   drawCalendar(9, 2020)
 })
