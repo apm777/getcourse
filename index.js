@@ -181,7 +181,7 @@ const parseGetCourseDate = (stringData) => {
     return new Date(
       currDate.getFullYear(),
       currDate.getMonth(),
-      currDate.getDate() + addDay,
+      currDate.getUTCDate() + addDay,
       hourAndMinute[0],
       hourAndMinute[1],
     )
