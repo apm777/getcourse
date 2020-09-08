@@ -174,6 +174,7 @@ const parseGetCourseDate = (stringData) => {
     }
 
     const currDate = new Date()
+    currDate.setMinutes(currDate.getMinutes() + currDate.getTimezoneOffset() + 180)
 
     if (matchTime !== null) {
       ;[, , hourAndMinute[0], hourAndMinute[1]] = matchTime
@@ -181,7 +182,7 @@ const parseGetCourseDate = (stringData) => {
     return new Date(
       currDate.getFullYear(),
       currDate.getMonth(),
-      currDate.getUTCDate() + addDay,
+      currDate.getDate() + addDay,
       hourAndMinute[0],
       hourAndMinute[1],
     )
