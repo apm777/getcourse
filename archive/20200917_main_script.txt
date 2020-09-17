@@ -1,97 +1,3 @@
-// const dataLessons = [
-//   {
-//     date: 'Дата начала Вт 08 Сен',
-//     link: '/teach/control/lesson/view/id/171143310',
-//     title: 'Входной тест',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Ср 09 Сен 17:00',
-//     link: '/teach/control/lesson/view/id/171143300',
-//     title: 'Разделы науки о языке и части речи',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Вс 13 Сен 13:00',
-//     link: '/teach/control/lesson/view/id/171143301',
-//     title: 'Понятие грамматической основы',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Пн 14 Сен 17:00',
-//     link: '/teach/control/lesson/view/id/171143311',
-//     title: 'PROКачка Плюс. Разбор варианта',
-//     description: 'PROКАЧКА Плюс',
-//     enable: false,
-//   },
-//   {
-//     date: 'Дата и время начала вчера 17:00',
-//     link: '/teach/control/lesson/view/id/171143302',
-//     title: 'Закрепление нового материала. Практика',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Вс 20 Сен 13:00',
-//     link: '/teach/control/lesson/view/id/171143303',
-//     title: 'Пунктуация в простом ослож. пред-и',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Вт 22 Сен 17:00',
-//     link: '/teach/control/lesson/view/id/171143304',
-//     title: 'Посиделки',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Ср 23 Сен 17:00',
-//     link: '/teach/control/lesson/view/id/171143305',
-//     title: 'Пунктуация в простом ослож. пред-и',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Вс 27 Сен 13:00',
-//     link: '/teach/control/lesson/view/id/171143306',
-//     title: 'Пунктуация при обращ-ях, уточнениях',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Пн 28 Сен 17:00',
-//     link: '/teach/control/lesson/view/id/171143312',
-//     title: 'PROКачка Плюс. Разбор варианта',
-//     description: 'PROКАЧКА Плюс',
-//     enable: false,
-//   },
-//   {
-//     date: 'Дата и время начала Ср 30 Сен 17:00',
-//     link: '/teach/control/lesson/view/id/171143307',
-//     title: 'Пунктуация в ССП и СПП',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата и время начала Вс 04 Окт 13:00',
-//     link: '/teach/control/lesson/view/id/171143308',
-//     title: 'Практика. Решение задания №3',
-//     description: '',
-//     enable: true,
-//   },
-//   {
-//     date: 'Дата начала Ср 07 Окт',
-//     link: '/teach/control/lesson/view/id/171143309',
-//     title: 'Итоговый тест',
-//     description: '',
-//     enable: true,
-//   },
-// ]
-
 const FISRT_DAY_OF_MOUNT = 1
 const COUNT_DAYS_OF_WEEK = 7
 
@@ -112,7 +18,6 @@ const getDataLesson = (date, dataLessons) => {
   let href = ''
   let description = ''
   let time = ''
-  let enable = true
 
   const ind = dataLessons.findIndex((value) => moment(value.newDate).isSame(date, 'day'))
 
@@ -120,13 +25,12 @@ const getDataLesson = (date, dataLessons) => {
     name = dataLessons[ind].title
     href = dataLessons[ind].link
     description = dataLessons[ind].description
-    enable = dataLessons[ind].enable
     if (dataLessons[ind].time !== '00:00') {
       time = dataLessons[ind].time
     }
   }
 
-  return { name, href, description, time, enable }
+  return { name, href, description, time }
 }
 
 const getCalendarMonth = (year, month, dataLessons) => {
@@ -142,16 +46,16 @@ const getCalendarMonth = (year, month, dataLessons) => {
     if (i === 0) {
       for (let j = 0; j < dayOfWeek - 1; j += 1) {
         const date = new Date(year, month - 1, 1 - (dayOfWeek - 1 - j))
-        const { name, href, description, time, enable } = getDataLesson(date, dataLessons)
-        dataWeek.push({ date, time, day: date.getDate(), name, href, description, enable })
+        const { name, href, description, time } = getDataLesson(date, dataLessons)
+        dataWeek.push({ date, time, day: date.getDate(), name, href, description })
       }
       secondBeginIndex = dayOfWeek - 1
     }
 
     for (let j = secondBeginIndex; j < COUNT_DAYS_OF_WEEK; j += 1) {
       const date = new Date(year, month - 1, 1 + numberDay)
-      const { name, href, description, time, enable } = getDataLesson(date, dataLessons)
-      dataWeek.push({ date, time, day: date.getDate(), name, href, description, enable })
+      const { name, href, description, time } = getDataLesson(date, dataLessons)
+      dataWeek.push({ date, time, day: date.getDate(), name, href, description })
 
       numberDay += 1
     }
@@ -221,14 +125,13 @@ const parseGetCourseDate = (stringData) => {
 const getDataLessons = () => {
   const dataLessons = []
 
-  $('.lesson-list li').each(function () {
-    const enable = $(this).hasClass('user-state-reached')
-    const date = $(this).find('.vmiddle .user-state-label').text().trim()
-    const link = $(this).find('.vmiddle .link').attr('href')
-    const title = $(this).find('.vmiddle .title').text().trim()
-    const description = $(this).find('.vmiddle .description').text().trim()
+  $('.lesson-list .vmiddle').each(function () {
+    const date = $(this).find('.user-state-label').text().trim()
+    const link = $(this).find('.link').attr('href')
+    const title = $(this).find('.title').text().trim()
+    const description = $(this).find('.description').text().trim()
 
-    dataLessons.push({ date, link, title, description, enable })
+    dataLessons.push({ date, link, title, description })
   })
 
   return dataLessons
@@ -311,15 +214,8 @@ const drawCalendar = (month, year) => {
       )
 
       if (day.name !== '') {
+        currDay.attr('onClick', `window.location.href='https://easypeasyschool.getcourse.ru${day.href}'`)
         currDay.addClass('calendar-day-lesson')
-
-        if (day.enable) {
-          currDay.attr('onClick', `window.location.href='https://easypeasyschool.getcourse.ru${day.href}'`)
-        } else {
-          currDay.click(function () {
-            alert(`Этот урок доступен только ученикам на тарифе ПРО+. Если произошла ошибка, или ты хочешь перевестись на этот тариф, напиши, пожалуйста, персональному менеджеру`)
-          })
-        }
         //       if (dayindex !== 6) {
         //         currDay.addClass('calendar-day-lesson')
         //       } else {
@@ -333,7 +229,3 @@ const drawCalendar = (month, year) => {
     })
   })
 }
-
-$(() => {
-  drawCalendar(9, 2020)
-})
